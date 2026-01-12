@@ -67,8 +67,8 @@ I set up a VirtualBox host-only network to connect the workstation and server.
 
 This setup allows the systems to connect with SSH but blocks outside access to the host or internet. This makes it safe for testing and learning.
 
-* Workstation IP: 192.168.56.10
-* Server IP: 192.168.56.20
+* Workstation IP: 192.168.56.101
+* Server IP: 192.168.56.102
 
 Using static or predictable IP addresses makes it easier to set up firewalls and control access later.
 
@@ -104,3 +104,4 @@ In Week 1, I learned that professional server environments rely on remote admini
 8. Conclusion
 
 Week 1: Establish a secure, professional foundation for the coursework. I deployed a headless Linux server, planned remote SSH access, and documented the system specifications using command-line tools. This environment is now ready for security hardening, monitoring, and performance evaluation in the coming weeks.
+
