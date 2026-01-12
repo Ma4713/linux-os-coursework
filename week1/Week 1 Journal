@@ -1,1 +1,106 @@
+Week 1 – System Planning and Distribution Selection
 
+1. Introduction
+
+During Week 1, I set up two Linux systems for safe remote management. I used a Linux server without a screen or desktop, controlled from another computer using SSH. This method is common in many workplaces. It improves command-line skills, increases safety, and uses less computer power.
+
+---
+
+2. System Architecture
+
+Architecture Overview
+
+The setup has two systems connected with a VirtualBox host-only network:
+
+* Workstation: Acts as the SSH client to manage the server remotely.
+* Server: A Linux server without a screen or desktop.
+* Network: The VirtualBox host-only network keeps systems separate from external networks while still allowing them to communicate securely with each other.
+
+SSH is the only way to access the server, so all administration is done remotely via the command line.
+
+Architecture Diagram
+
+Architectural Rationale
+
+This setup is similar to how servers are managed in large server rooms and online services. Without a desktop, the server uses less processing power and memory, saves energy, and is safer. The host-only network blocks outside connections but still lets you manage the server from another computer.
+
+---
+
+3. Distribution Selection Justification
+
+Selected Distribution: Ubuntu Server LTS
+
+I chose Ubuntu Server LTS as the server operating system for these reasons:
+
+* Long-Term Support (LTS) means the system gets security updates and stays stable, which is essential for real-world use.
+* There is extensive documentation and community support, which makes troubleshooting and learning easier.
+* Ubuntu Server has built-in security tools like AppArmor, which will help when setting up strict access rules later in the course.
+* Ubuntu is widely used in companies, so the skills I learn here apply to real tech and cloud jobs.
+
+Comparison with Alternatives
+
+Distribution	Advantages	Disadvantages
+Ubuntu Server LTS	Stable, long-term support, strong documentation	Slightly larger footprint
+Debian	Very stable, minimal	Older package versions
+CentOS Stream	Enterprise-like environment	Rolling updates reduce predictability
+
+
+I picked Ubuntu Server because it is reliable, easy to use, and well-suited for real-world work.
+
+---
+
+4. Workstation Configuration Decision
+
+Selected Option: Workstation with SSH Client
+
+The workstation is used to access and manage the server. It runs an SSH client for remote commands, script monitoring, and performance analysis.
+
+Using a separate workstation is a good security practice. It prevents direct server access and ensures all setup is done remotely, as in professional system administration. Configuration
+
+VirtualBox Network Setup
+
+I set up a VirtualBox host-only network to connect the workstation and server.
+
+* Network Type: Host-Only Network
+* Subnet: 192.168.56.0/24
+* Purpose: Isolated internal communication for secure testing
+
+This setup allows the systems to connect with SSH but blocks outside access to the host or internet. This makes it safe for testing and learning.
+
+* Workstation IP: 192.168.56.10
+* Server IP: 192.168.56.20
+
+Using static or predictable IP addresses makes it easier to set up firewalls and control access later.
+
+6. System Specification Evidence (CLI)
+
+I used SSH to run these commands on the server and record its system specifications:
+
+uname -a
+free -h
+df -h
+ip addr
+lsb_release -a
+
+
+Command Purpose Explanation
+
+* uname -a: Shows information about the kernel and system architecture
+* Free -h: Displays memory usage in a format that is easy to read.
+* Df -h: Reports how much disk space is being used.
+* Ip addr: Shows the network interface settings and IP addresses.
+* lsb_release -a: Confirms which Linux distribution and version are running.
+
+
+
+---
+
+7. Reflection
+
+In Week 1, I learned that professional server environments rely on remote administration rather than local access. Setting up VirtualBox networking took some trial and error as I figured out the differences between NAT and host-only networking. This experience showed me that network isolation can make systems more secure while still allowing controlled access. It also reinforced the importance of planning before implementation. The choices made during system architecture and distribution selection will directly affect security configuration, monitoring, and performance testing in later phases of the coursework.
+
+---
+
+8. Conclusion
+
+Week 1: Establish a secure, professional foundation for the coursework. I deployed a headless Linux server, planned remote SSH access, and documented the system specifications using command-line tools. This environment is now ready for security hardening, monitoring, and performance evaluation in the coming weeks.
